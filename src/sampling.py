@@ -30,10 +30,3 @@ class TwitterCrawlingResult:
         with(open(output_filename, "w")) as file:
             self.samples.to_json(file, orient="records", lines=True)
         print(self.samples.head())
-
-# res = TwitterCrawlingResult("../tmp/test.json")
-# res = TwitterCrawlingResult("../tmp/tweets_kw_politics_12.json")
-
-# res.sample_most_retweets(0.1).to_json("../out/text_sampled.json")
-# res.sample_randomly(0.1).to_json("../out/tweets_kw_politics_12_sampled_rand.js#on")
-# print(res.orig_df.sort_values(by="retweetCount", ascending=False).head())

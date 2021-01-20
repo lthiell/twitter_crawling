@@ -63,7 +63,7 @@ def scrape_for_hash_tag(hash_tag, start_date, end_date, tf_name, max_amount_per_
 
 def scrape_concurrently(hash_tags, key_words, time_frames, max_amount_per_timeframe, rel_amount_random,
                         rel_amount_retweets, keep_original_files):
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=16) as executor:
 
         for kw in key_words:
             for tf in time_frames:

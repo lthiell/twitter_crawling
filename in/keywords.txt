@@ -1,1 +1,6 @@
 vaccination
+covid
+ill
+sick
+cirus
+corona

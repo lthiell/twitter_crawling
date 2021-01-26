@@ -3,11 +3,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from configparser import ConfigParser
 
 from src.sampling import TwitterCrawlingResult
-
-
-def read_txt(filename):
-    f = open(filename, "r")
-    return f.read().split("\n")
+from src.util import read_txt
 
 
 def read_config(filename):
@@ -57,13 +53,14 @@ def scrape_for_hash_tag(hash_tag, start_date, end_date, tf_name, max_amount_per_
               + "\" > " + "../tmp/" + file_name)
     print("Finished scraping hashtag: " + hash_tag + ", " + start_date + ", " + end_date)
     print("Started postprocessing hashtag: " + hash_tag + ", " + start_date + ", " + end_date)
-    post_process("../tmp/" + file_name, "../out/sampled/" + file_name, rel_amount_random, rel_amount_retweets, keep_original_files)
+    post_process("../tmp/" + file_name, "../out/sampled/" + file_name, rel_amount_random, rel_amount_retweets,
+                 keep_original_files)
     print("Finished postprocessing hashtag: " + hash_tag + ", " + start_date + ", " + end_date)
 
 
 def scrape_concurrently(hash_tags, key_words, time_frames, max_amount_per_timeframe, rel_amount_random,
                         rel_amount_retweets, keep_original_files):
-    with ThreadPoolExecutor(max_workers=16) as executor:
+    with ThreadPoolExecutor(max_workers=8) as executor:
 
         for kw in key_words:
             for tf in time_frames:

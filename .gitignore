@@ -143,3 +143,5 @@ out
 #idea folder
 .idea
 
+#tmp folder
+tmp
